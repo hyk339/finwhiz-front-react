@@ -1,0 +1,18 @@
+.Button {
+    padding: 0.75rem 1.5rem;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.Button:active {
+  transform: scale(0.97);
+}
+
+.Button_gray {
+    background-color: gray;
+}
