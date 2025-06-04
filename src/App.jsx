@@ -29,7 +29,7 @@ function reducer(state, action){
   return state;
 }
 
-const NewsStateContext = createContext();
+export const NewsStateContext = createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
