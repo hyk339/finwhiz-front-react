@@ -1,10 +1,10 @@
 import './NewsItem.css'
 
-const NewsItem = ({id, createdData, newsTitle}) => {
+const NewsItem = ({seq, title}) => {
     return (
       <div className="NewsItem">
         <div className="info_section">
-            <div className="content">{newsTitle}</div>
+            <div className="content">{title}</div>
         </div>
       </div>
     );

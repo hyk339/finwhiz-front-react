@@ -1,7 +1,27 @@
 import "./NewsList.css";
 import NewsItem from "./NewsItem";
+import {supabase} from '../utils/supabaseClient'
+import { useEffect,useState } from "react";
 
-const NewsList = ({data})=>{
+
+const NewsList = ()=>{
+    const [news, setNews] = useState([])
+
+    useEffect(() => {
+    const fetchData = async () => {
+      let { data, error } = await supabase
+        .from('news')  // 테이블 이름
+        .select('*')
+
+      if (error) console.error('에러:', error)
+      else setNews(data)
+    }
+
+    fetchData()
+  }, [])
+
+
+
     return (
     <div className="NewsList">
         <div className="menu_bar">
@@ -11,7 +31,7 @@ const NewsList = ({data})=>{
             </select>
         </div>
         <div className="list_wrapper">
-             {data.map((item)=><NewsItem key={item.id} {...item}/>)}
+             {news.map((item)=><NewsItem key={item.seq} {...item}/>)}
         </div>
     </div>
 
