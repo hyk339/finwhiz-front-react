@@ -5,22 +5,31 @@ import { useEffect,useState } from "react";
 
 
 const NewsList = ()=>{
-    const [news, setNews] = useState([])
+    const [newsList, setNewsList] = useState([])
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
-    const fetchData = async () => {
-      let { data, error } = await supabase
-        .from('news')  // 테이블 이름
-        .select('*')
+      const fetchData = async () => {
+        let { data, error } = await supabase
+          .from('news')  // 테이블 이름
+          .select('*')
 
-      if (error) console.error('에러:', error)
-      else setNews(data)
+        if (error) console.error('에러:', error)
+        else setNewsList(data)
+      }
+
+      fetchData()
+    }, [])
+    const onSearchChange = (e)=>{
+      setSearch(e.target.value);
     }
 
-    fetchData()
-  }, [])
-
-
+    const getFilteredData = ()=>{
+      if(search === ""){
+        return newsList;
+      }
+      return newsList.filter((news)=>news.title.includes(search))
+    }
 
     return (
     <div className="NewsList">
@@ -30,8 +39,9 @@ const NewsList = ()=>{
                 <option value={"oldest"}>오래된 순</option>
             </select>
         </div>
+        <input placeholder="검색어를 입력하세요." value={search} onChange={onSearchChange}/>
         <div className="list_wrapper">
-             {news.map((item)=><NewsItem key={item.seq} {...item}/>)}
+             {getFilteredData().map((news)=><NewsItem key={news.seq} {...news}/>)}
         </div>
     </div>
 
