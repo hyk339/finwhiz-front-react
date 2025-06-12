@@ -9,6 +9,7 @@ const NewsList = ()=>{
     const [search, setSearch] = useState("");
 
     useEffect(() => {
+      
       const fetchData = async () => {
         let { data, error } = await supabase
           .from('news')  // 테이블 이름
@@ -17,9 +18,14 @@ const NewsList = ()=>{
         if (error) console.error('에러:', error)
         else setNewsList(data)
       }
+      
 
       fetchData()
+      
     }, [])
+
+    
+    
     const onSearchChange = (e)=>{
       setSearch(e.target.value);
     }

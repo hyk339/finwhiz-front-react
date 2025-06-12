@@ -1,0 +1,55 @@
+.SideMenu {
+  position: relative;
+}
+
+.hamburger-button {
+  padding: 10px 15px;
+  border: none;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+/* 사이드 메뉴 기본 상태 */
+.side-menu {  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  width:30%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1002;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 메뉴 열릴 때 */
+.side-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 메뉴 제목 */
+.menu-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 메뉴 항목 */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.side-menu li:hover {
+  color: #007bff;
+}
