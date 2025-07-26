@@ -1,7 +1,7 @@
 import './SideMenu.css';
 import { useNavigate } from 'react-router-dom'
 
-const SideMenu = ({isOpen}) => {
+const SideMenu = ({isOpen, onClose}) => {
   
   const navigate = useNavigate();
 
@@ -10,7 +10,14 @@ const SideMenu = ({isOpen}) => {
       <div className={`side-menu ${isOpen ? "open" : ""}`}>
         <h2 className="menu-title">📋 메뉴</h2>
         <ul>
-          <li onClick={()=>{navigate('/')}}>🏠 홈</li>
+          <li onClick={()=>{
+            navigate('/')
+            onClose()
+          }}>🏠 홈</li>
+          <li onClick={()=>{
+            navigate('/valueScoreRank')
+            onClose()
+            }}>🏠 밸류스코어</li>
         </ul>
       </div>
     </div>
